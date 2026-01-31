@@ -27,7 +27,7 @@
     };
 
     xinux-lib = {
-      url = "github:xinux-org/lib";
+      url = "github:itsbilolbek/xinux-org-lib/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     e-imzo-manager = {
@@ -51,6 +51,9 @@
   outputs =
     inputs:
     inputs.xinux-lib.mkFlake {
+      imports = [
+        inputs.xinux-lib.flakeModules.developmentShell
+      ];
       inherit inputs;
       channels-config.allowUnfree = true;
       src = ./.;
